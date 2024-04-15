@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile Card</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        .profile-card {
+            width: 300px;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 500px;
+        }
+
+        .profile-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .profile-card h1 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .profile-card p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .profile-card .contact-info {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .profile-card .stats {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 15%;
+           
+        }
+
+        .profile-card .stats h4 {
+            margin: 0;
+        }
+
+        .profile-card .actions {
+            display: flex;
+            justify-content: space-around;
+            height: 20%;
+            margin-top: 20px;
+        }
+
+        .profile-card .actions button {
+            border: 1px solid black;
+            border-radius: 10%;
+            padding: 10px 20px;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .profile-card .actions button:hover {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div>
+            <img src="profile.jpg" alt="Profile Picture">
+            <h1>Tahura Nasrin</h1>
+            <p>ERP Developer</p>
+            <p>Short description</p>
+            <p class="contact-info">Email: tahuramitu13@gmail.com</p>
+            <p class="contact-info">Mobile: +08801684159493</p>
+        </div>
+
+        <div class="stats">
+            <div>
+                <h4>Projects</h4>
+                <p>22</p>
+            </div>
+            <div>
+                <h4>Followings</h4>
+                <p>56</p>
+            </div>
+            <div>
+                <h4>Followers</h4>
+                <p>100</p>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button>Follow</button>
+            <button>Hire Me</button>
+        </div>
+    </div>
+</body>
+</html>

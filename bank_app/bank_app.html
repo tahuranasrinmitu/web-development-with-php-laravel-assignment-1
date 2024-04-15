@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        class BankAccount {
+            constructor(accountNumber, ownerName, balance) {
+                this.accountNumber = accountNumber;
+                this.ownerName = ownerName;
+                this.balance = balance;
+                this.transactionHistory = [];
+            }
+
+            deposit(amount) {
+                if (amount > 0) {
+                    this.balance += amount;
+                    this.transactionHistory.push({ type: 'Deposit', amount, date: new Date() });
+                    console.log(`$${amount} deposited successfully.`);
+                } else {
+                    console.log("Invalid deposit amount.");
+                }
+            }
+
+            withdraw(amount) {
+                if (amount > 0 && amount <= this.balance) {
+                    this.balance -= amount;
+                    this.transactionHistory.push({ type: 'Withdrawal', amount, date: new Date() });
+                    console.log(`$${amount} withdrawn successfully.`);
+                } else {
+                    console.log("Insufficient funds or invalid withdrawal amount.");
+                }
+            }
+
+            displayAccountInfo() {
+                console.log(`Account Number: ${this.accountNumber}`);
+                console.log(`Owner Name: ${this.ownerName}`);
+                console.log(`Balance: $${this.balance}`);
+                console.log('Transaction History:');
+                this.transactionHistory.forEach(transaction => {
+                    console.log(`${transaction.type}: $${transaction.amount}, Date: ${transaction.date}`);
+                });
+            }
+        }
+
+        // Create accounts
+        const accounts = [
+            new BankAccount(1001, "John Doe", 1000),
+            new BankAccount(1002, "Jane Smith", 2000)
+        ];
+
+        function selectAccount() {
+            console.log("Select an account:");
+            accounts.forEach(account => {
+                console.log(`${account.accountNumber}: ${account.ownerName}`);
+            });
+            const selectedAccountNumber = parseInt(prompt("Enter the account holder number:"));
+            const selectedAccount = accounts.find(account => account.accountNumber === selectedAccountNumber);
+            return selectedAccount;
+        }
+
+        function deposit() {
+            const selectedAccount = selectAccount();
+            const amount = parseFloat(prompt("Enter deposit amount:"));
+            selectedAccount.deposit(amount);
+            selectedAccount.displayAccountInfo();
+        }
+
+        function withdraw() {
+            const selectedAccount = selectAccount();
+            const amount = parseFloat(prompt("Enter withdrawal amount:"));
+            selectedAccount.withdraw(amount);
+            selectedAccount.displayAccountInfo();
+        }
+
+        function menu() {
+            console.log("1. Deposit");
+            console.log("2. Withdraw");
+            console.log("3. Exit");
+            const choice = parseInt(prompt("Enter your choice: Deposit press 1 &  Withdraw press 2"));
+            switch (choice) {
+                case 1:
+                    deposit();
+                    break;
+                case 2:
+                    withdraw();
+                    break;
+                case 3:
+                    console.log("Exiting...");
+                    return;
+                default:
+                    console.log("Invalid choice. Please enter a valid option.");
+            }
+            menu();
+        }
+
+        // Start the application
+        menu();
+
+
+    </script>
+</body>
+
+</html>
